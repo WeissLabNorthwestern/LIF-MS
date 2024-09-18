@@ -9,13 +9,17 @@ library(stringr)
 # Benjamin Parker, PhD
 # UPDATES 4.15.24
 # Can remove QN as well as IAA-alkylated cys.
-# If no DECOY is detected, removes first 1000 peptides.
 
 # ##### USAGE###
 # lifms_label_extractor.R [txt file from comet] [mass tag to seach for as listed in comet] [location of reference fasta]
 # For output.txt, butylpyrrolidine mass tag (125.1204Da) and the STK38 kinase, 
 # an example command might be:
 #  lifms_label_extractor.R output.txt 125.1204 stk38.fasta
+
+# Outputs a list of crosslink tag locations based on the residues from the input fasta. Make
+# sure that COMET is using the same fasta as this script when generating the txt of tryptic peptides.
+# FDR is calculated by first location of decoy in list of peptides; see the noFDR script if you don't want this.
+
 
 ### REVISED FOR NEW COMET 2018 VERSION ###
 # Comet no longer uses rev_sp for decoy, instead using the DECOY prefix.
